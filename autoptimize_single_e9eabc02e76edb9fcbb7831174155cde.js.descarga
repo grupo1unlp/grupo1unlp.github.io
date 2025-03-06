@@ -1,0 +1,9 @@
+noLaborableGrid();noLaborable();var aLENext=$(".simcal-nav-button.simcal-next");var aLEPrev=$(".simcal-nav-button.simcal-prev");var gridHead=$(".simcal-calendar-head");var pathname=window.location.pathname;if(pathname!="/calendario-academico/"){gridHead.eq(1).css("display","none");}else{function myFunction(x){if(x.matches){aLENext.eq(1).css("display","none");aLEPrev.eq(1).css("display","none");}else{aLENext.eq(2).css("display","none");aLEPrev.eq(2).css("display","none");}}
+var x=window.matchMedia("(max-width: 800px)")
+myFunction(x)
+x.addListener(myFunction)}
+var i=1;if(pathname=="/calendario-academico/"){if(x.matches){i=1;gridHead.eq(i).css("display","none");}else{i=2;}}
+if(aLENext.length>0&&aLEPrev.length>0){$(".simcal-nav-button.simcal-next").on('click',function(){aLENext[i].click();});$(".simcal-nav-button.simcal-prev").on('click',function(){aLEPrev[i].click();});}
+function noLaborable(){var num=0;$("div.simcal-day-has-events").each(function(i,obj){var feriado=false;$(this).find(".simcal-event-title").each(function(o,obj1){var titulo=$(this).text().toLowerCase().replace(" ","");if(titulo=="nolaborable"){feriado=true;}
+if(feriado){var descripcion=$(this).parent().next().children();var titulo_bien=descripcion.text();descripcion.text("");$(this).text(titulo_bien);$(this).parent().parent().find("p > .no-laborable").css("display","inline");}});});}
+function noLaborableGrid(){var num=0;$("td.simcal-day-has-events").each(function(i,obj){var feriado=false;$(this).find(".simcal-event-title").each(function(o,obj1){var titulo=$(this).text().toLowerCase().replace(" ","");if(titulo=="nolaborable"){feriado=true;}});if(feriado){$(this).css({"border":"solid #61b0f7 2px"});}});}
